@@ -11,8 +11,4 @@
     <Folder Include="ModuloFornecedores\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ModuloPacientes\" />
-  </ItemGroup>
-
 </Project>
