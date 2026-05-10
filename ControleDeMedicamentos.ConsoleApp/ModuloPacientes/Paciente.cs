@@ -35,16 +35,16 @@ public class Paciente : EntidadeBase
     List<string> erros = new List<string>();
 
     if (Nome.Length < 3 || Nome.Length > 100)
-      erros.Add("O campo \"Nome\" deve conter entre 2 e 100 caracteres.");
+      erros.Add("O campo \"Nome\" deve conter entre 3 e 100 caracteres.");
 
     if (Telefone.Length < 14 || Telefone.Length > 15)
-      erros.Add("O campo \"Telefone\" deve ser preenchido corretamente: (XX) XXXX-XXXX");
+      erros.Add("O campo \"Telefone\" deve ser preenchido corretamente e seguir essa estrutura: (XX) XXXX-XXXX");
 
-    if (CartaoSus.Length != 15)
-      erros.Add("O campo \"CartaoSus\" deve conter 15 digitos.");
+    if (CartaoSus.Length != 18)
+      erros.Add("O campo \"CartaoSus\" deve conter 15 digitos e seguir essa estrutura: 0000 0000 0000 000");
 
-    if (Cpf.Length != 11)
-      erros.Add("O campo \"Cpf\" deve conter 11 digitos.");
+    if (Cpf.Length != 14)
+      erros.Add("O campo \"Cpf\" deve conter 11 digitos e seguir essa estrutura: 000.000.000-00");
 
     return erros;
   }
