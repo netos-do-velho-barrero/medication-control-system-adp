@@ -9,9 +9,6 @@
 
   <ItemGroup>
     <Folder Include="ModuloFornecedores\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="ModuloMedicamentos\" />
     <Folder Include="ModuloPacientes\" />
   </ItemGroup>
