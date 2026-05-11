@@ -2,7 +2,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ControleDeMedicamentos.ConsoleApp.ModuloPacientes;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
-using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 
 namespace ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 
