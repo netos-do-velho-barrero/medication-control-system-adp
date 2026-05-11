@@ -12,6 +12,11 @@ public class Medicamento : EntidadeBase
 
     public bool EstaEmFalta => QuantidadeEmEstoque < 20;
 
+    public Medicamento()
+    {
+
+    }
+
     public override void AtualizarDados(EntidadeBase entidadeAtualizada)
     {
         Medicamento medicamentoAtualizado = (Medicamento)entidadeAtualizada;
