@@ -1,5 +1,6 @@
 using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+using ControleDeMedicamentos.ConsoleApp.Utilidades;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
 
@@ -24,7 +25,7 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaOpcoes, ITelaCrud
 
         if (medicamentos.Count == 0)
         {
-            Console.WriteLine("Nenhum medicamento cadastrado.");
+            Notificador.ExibirMensagem("Nenhum medicamento cadastrado.");
             return;
         }
 
@@ -94,7 +95,7 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaOpcoes, ITelaCrud
 
             if (erros.Count > 0)
             {
-                Utilidades.Notificador.ExibirMensagensErro(erros);
+                Notificador.ExibirMensagensErro(erros);
                 Cadastrar();
                 return;
             }
@@ -108,14 +109,14 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaOpcoes, ITelaCrud
                 existente.QuantidadeEmEstoque += novaEntidade.QuantidadeEmEstoque;
                 // Persiste via editar para acionar o Salvar() no repositório em arquivo
                 repositorio.Editar(existente.Id, existente);
-                Utilidades.Notificador.ExibirMensagem(
+                Notificador.ExibirMensagem(
                     $"O medicamento '{existente.Nome}' já estava cadastrado. Quantidade atualizada para {existente.QuantidadeEmEstoque} unidades.");
                 return;
             }
 
             repositorio.Cadastrar(novaEntidade);
 
-            Utilidades.Notificador.ExibirMensagem($"O registro \"{novaEntidade.Id}\" foi cadastrado com sucesso!");
+            Notificador.ExibirMensagem($"O registro \"{novaEntidade.Id}\" foi cadastrado com sucesso!");
         }
         catch (FormatException)
         {
