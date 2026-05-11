@@ -15,6 +15,8 @@ public class ContextoJson
     public List<Fornecedor> Fornecedores { get; set; } = new List<Fornecedor>();
     public List<Medicamento> Medicamentos { get; set; } = new List<Medicamento>();
 
+    public List<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
+
     public ContextoJson()
     {
         string caminhoAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -59,5 +61,7 @@ public class ContextoJson
         this.Fornecedores = contextoSalvo.Fornecedores;
 
         this.Medicamentos = contextoSalvo.Medicamentos;
+
+        this.Funcionarios = contextoSalvo.Funcionarios;
     }
 }
