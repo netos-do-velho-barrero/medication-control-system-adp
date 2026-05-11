@@ -9,6 +9,10 @@ public class Fornecedor : EntidadeBase
     public string Telefone { get; set; } = string.Empty;
     public string Cnpj { get; set; } = string.Empty;
 
+    public Fornecedor()
+    {
+    }
+
     public override void AtualizarDados(EntidadeBase entidadeAtualizada)
     {
         Fornecedor fornecedorAtualizado = (Fornecedor)entidadeAtualizada;
