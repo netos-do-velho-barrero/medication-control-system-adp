@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+namespace ControleDeMedicamentos.ConsoleApp.ModuloFuncionarios;
 
 public class Funcionario : EntidadeBase
 {

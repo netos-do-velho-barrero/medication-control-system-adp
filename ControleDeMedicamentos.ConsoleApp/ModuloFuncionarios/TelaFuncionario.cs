@@ -14,7 +14,7 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFuncionarios
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
       if (deveExibirCabecalho)
-        ExibirCabecalho("Visualização de Pacientes");
+        ExibirCabecalho("Visualização de Funcionario");
 
       List<Funcionario> funcionarios = repositorio.SelecionarTodos();
 
@@ -25,15 +25,15 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFuncionarios
       }
 
       Console.WriteLine(
-          "{0, -7} | {1, -10} | {2, -15} | {3, -20} | {4, -15}",
-          "Id", "Nome", "Telefone", "Cartao do Sus", "CPF"
+          "{0, -7} | {1, -10} | {2, -18} | {3, -15}",
+          "Id", "Nome", "Telefone", "CPF"
       );
 
-      foreach (Funcionario p in funcionarios)
+      foreach (Funcionario f in funcionarios)
       {
         Console.WriteLine(
-            "{0, -7} | {1, -10} |  {3, -20} | {4, -15}",
-            p.Id, p.Nome, p.Telefone, p.Cpf
+            "{0, -7} | {1, -10} |  {2, -18} | {3, -15}",
+            f.Id, f.Nome, f.Telefone, f.Cpf
         );
       }
 
