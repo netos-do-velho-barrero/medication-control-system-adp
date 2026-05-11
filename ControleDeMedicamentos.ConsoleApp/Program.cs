@@ -3,8 +3,10 @@ using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado.Arquivos;
 using ControleDeMedicamentos.ConsoleApp.ModuloPacientes;
 using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
-using ControleDeMedicamentos.ConsoleApp.Utilidades;
 using ControleDeMedicamentos.ConsoleApp.ModuloMedicamentos;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionarios;
+using ControleDeMedicamentos.ConsoleApp.ModuloEstoque;
+using ControleDeMedicamentos.ConsoleApp.Utilidades;
 
 ContextoJson contexto = new ContextoJson();
 
@@ -21,11 +23,17 @@ catch (JsonException)
 IRepositorio<Paciente> repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
 IRepositorio<Fornecedor> repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
 IRepositorio<Medicamento> repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
+IRepositorio<Funcionario> repositorioFuncionario = new RepositorioFuncionarioEmArquivo(contexto);
+IRepositorio<RequisicaoEntrada> repositorioRequisicaoEntrada = new RepositorioRequisicaoEntradaEmArquivo(contexto);
+IRepositorio<RequisicaoSaida> repositorioRequisicaoSaida = new RepositorioRequisicaoSaidaEmArquivo(contexto);
 
 TelaPrincipal telaPrincipal = new TelaPrincipal(
     repositorioPaciente,
     repositorioFornecedor,
-    repositorioMedicamento
+    repositorioMedicamento,
+    repositorioFuncionario,
+    repositorioRequisicaoEntrada,
+    repositorioRequisicaoSaida
 );
 
 while (true)
@@ -36,6 +44,24 @@ while (true)
     {
         Console.Clear();
         break;
+    }
+
+    // TelaEstoque gerencia seu próprio submenu internamente,
+    // por isso só precisa ficar em loop chamando ObterOpcaoMenu()
+    if (telaSelecionada is TelaEstoque)
+    {
+        while (true)
+        {
+            string? opcao = telaSelecionada.ObterOpcaoMenu();
+
+            if (opcao == "S")
+            {
+                Console.Clear();
+                break;
+            }
+        }
+
+        continue;
     }
 
     while (true)
