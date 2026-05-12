@@ -1,52 +1,222 @@
-# Medication Control
+<div align="center">
 
-A pharmacy/medication management system built during the [Academia do Programador](https://www.academiadoprogramador.net) Fullstack course (2026).
+# 📚 Controle de Medicamentos
 
-## Features
+### Sistema de gerenciamento de controles de medicamentos desenvolvido em **C# com POO**
+Controle de pacientes, funcionários, medicamentos, fornecedores e estoque com separação de responsabilidades e regras de negócio reais.
 
-### Suppliers
-- Register, view, edit, and delete suppliers
-- Required: Name (3–100 chars), Phone, CNPJ (14 digits)
-- Duplicate CNPJ is not allowed
+---
 
-### Patients
-- Register, view, edit, and delete patients
-- Required: Name (3–100 chars), Phone `(XX) XXXX-XXXX` or `(XX) XXXXX-XXXX`, SUS Card (15 digits), CPF (11 digits)
-- Duplicate SUS card is not allowed
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Console App](https://img.shields.io/badge/Console-Application-black?style=for-the-badge&logo=windows-terminal&logoColor=white)
+![OOP](https://img.shields.io/badge/Paradigm-OOP-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Concluído-brightgreen?style=for-the-badge)
 
-### Medications
-- Register, view, edit, and delete medications
-- Required: Name (3–100 chars), Description (5–255 chars), Stock quantity (positive), Supplier
-- Items with fewer than 20 units are flagged as **low stock**
-- Re-registering an existing medication updates its quantity
+</div>
 
-### Employees
-- Register, view, edit, and delete employees
-- Required: Name (3–100 chars), Phone, CPF (11 digits)
-- Duplicate CPF is not allowed
+---
 
-### Inventory
+# 📌 Sobre o Projeto
 
-**Incoming Requests**
-- Register and view stock intake entries
-- Required: Date, Medication, Employee, Quantity (positive)
-- Stock is updated automatically on entry
+O **Medication Control** foi desenvolvido com foco em:
 
-**Outgoing Requests**
-- Register and view stock withdrawal entries
-- Required: Date, Patient, Medications
-- Cannot exceed available stock; quantity is deducted automatically
+- Organização em camadas
+- Separação de responsabilidades
+- Regras de negócio reais
+- Encapsulamento
+- Comunicação entre objetos
+- Estrutura limpa e legível
 
-## Getting Started
+A aplicação permite registrar entradas e saídas de medicamentos, controlar estoque automaticamente e validar operações importantes do sistema.
+
+---
+
+# ✅ Funcionalidades
+
+## 💊 Medicamentos
+
+- Cadastro de medicamentos
+- Visualização, edição e exclusão
+- Controle automático de estoque
+- Associação com fornecedores
+- Validações de campos obrigatórios
+- Identificação de estoque baixo
+
+### Regras
+
+- Nome obrigatório
+- Descrição obrigatória
+- Quantidade deve ser positiva
+- Medicamentos com menos de 20 unidades são sinalizados
+
+---
+
+## 🏢 Fornecedores
+
+- Cadastro de fornecedores
+- Visualização, edição e exclusão
+- Controle de CNPJ
+
+### Regras
+
+- Nome obrigatório
+- Telefone obrigatório
+- CNPJ deve ser único
+
+---
+
+## 🧑‍🤝‍🧑 Pacientes
+
+- Cadastro de pacientes
+- Visualização, edição e exclusão
+- Controle de CPF e cartão SUS
+
+### Regras
+
+- Nome obrigatório
+- CPF válido
+- Cartão SUS único
+
+---
+
+## 👨‍⚕️ Funcionários
+
+- Cadastro de funcionários
+- Visualização, edição e exclusão
+- Controle de responsáveis pelas movimentações
+
+### Regras
+
+- Nome obrigatório
+- CPF único
+- Telefone obrigatório
+
+---
+
+# 📦 Controle de Estoque
+
+## 📥 Requisições de Entrada
+
+- Registro de entrada de medicamentos
+- Controle automático de estoque
+- Associação com funcionário responsável
+
+### Regras
+
+- Data válida
+- Medicamento obrigatório
+- Funcionário obrigatório
+- Quantidade positiva
+
+---
+
+## 📤 Requisições de Saída
+
+- Registro de saída de medicamentos
+- Controle automático de baixa no estoque
+- Associação com paciente
+
+### Regras
+
+- Não permitir retirada acima do estoque disponível
+- Quantidade removida automaticamente
+- Paciente obrigatório
+
+---
+
+# 🧠 Conceitos Aplicados
+
+| Conceito | Aplicação |
+|---|---|
+| 🏗️ Classes e Objetos | Modelagem das entidades do sistema |
+| 🔒 Encapsulamento | Proteção dos dados internos |
+| 📐 Separação de Responsabilidades | Divisão entre telas, regras e entidades |
+| ⚙️ Regras de Negócio | Controle de estoque e validações |
+| 🔗 Comunicação entre Classes | Integração entre módulos |
+| 🖥️ Console Application | Interface interativa via terminal |
+
+---
+
+# 📂 Estrutura do Projeto
 
 ```bash
-# Restore dependencies
-dotnet restore
+📦 medication-control-system-adp
+ ┣ 📁 ControleDeMedicamentos.ConsoleApp
+ ┃ ┣ 📁 ModuloMedicamento
+ ┃ ┣ 📁 ModuloFornecedor
+ ┃ ┣ 📁 ModuloPaciente
+ ┃ ┣ 📁 ModuloFuncionario
+ ┃ ┣ 📁 ModuloRequisicaoEntrada
+ ┃ ┣ 📁 ModuloRequisicaoSaida
+ ┃ ┣ 📜 TelaPrincipal.cs
+ ┃ ┗ 📜 Program.cs
+ ┗ 📜 README.md
+```
 
-# Run the project
+---
+
+# ⚙️ Tecnologias Utilizadas
+
+- C#
+- .NET
+- Console Application
+- Programação Orientada a Objetos (POO)
+
+---
+
+# ▶️ Como Executar
+
+## 1. Clone o repositório
+
+```bash
+git clone https://github.com/netos-do-velho-barrero/medication-control-system-adp.git
+```
+
+## 2. Acesse a pasta do projeto
+
+```bash
+cd medication-control-system-adp
+```
+
+## 3. Execute o projeto
+
+```bash
 dotnet run --project ControleDeMedicamentos.ConsoleApp
 ```
 
-## Requirements
+---
 
-- .NET 10.0 SDK
+# 📋 Requisitos
+
+- .NET SDK instalado
+- Visual Studio 2022 ou superior
+
+---
+
+# 🎯 Objetivo de Aprendizado
+
+Este projeto foi desenvolvido para praticar:
+
+- ✔️ Programação Orientada a Objetos
+- ✔️ Estruturação de projetos em C#
+- ✔️ Separação de responsabilidades
+- ✔️ Modelagem de entidades reais
+- ✔️ Aplicação de regras de negócio
+- ✔️ Manipulação de dados em aplicações console
+- ✔️ Organização limpa e reutilizável do código
+
+---
+
+
+## 👨‍💻 Autores
+
+<div align="center">
+
+Desenvolvido por **Pedro Henrique** e **Marco Oliveira** como parte dos estudos em **C# e Programação Orientada a Objetos**.
+
+[![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquedsdev-181717?style=for-the-badge&logo=github)](https://github.com/pedrohenriquedsdev)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Marco--Oliver-181717?style=for-the-badge&logo=github)](https://github.com/Marco-Oliver)
+
+</div>
