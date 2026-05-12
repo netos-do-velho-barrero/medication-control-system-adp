@@ -13,7 +13,7 @@ public class TelaFuncionario : TelaBase<Funcionario>, ITelaOpcoes, ITelaCrud
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
-            ExibirCabecalho("Visualização de Pacientes");
+            ExibirCabecalho("Visualização de Funcionario");
 
         List<Funcionario> funcionarios = repositorio.SelecionarTodos(); //repositorio.SelecionarTodos();
 
@@ -24,14 +24,14 @@ public class TelaFuncionario : TelaBase<Funcionario>, ITelaOpcoes, ITelaCrud
         }
 
         Console.WriteLine(
-            "{0, -7} | {1, -10} | {2, -15} | {3, -20} | {4, -15}",
-            "Id", "Nome", "Telefone", "Cartao do Sus", "CPF"
+            "{0, -7} | {1, -10} | {2, -20} | {3, -15}",
+            "Id", "Nome", "Telefone", "CPF"
         );
 
         foreach (Funcionario f in funcionarios)
         {
             Console.WriteLine(
-                "{0, -7} | {1, -10} |  {3, -20} | {4, -15}",
+                "{0, -7} | {1, -10} |  {2, -20} | {3, -15}",
                 f.Id, f.Nome, f.Telefone, f.Cpf
             );
         }
@@ -44,8 +44,36 @@ public class TelaFuncionario : TelaBase<Funcionario>, ITelaOpcoes, ITelaCrud
         }
     }
 
-    protected override Funcionario ObterDadosCadastrais()
+      protected override Funcionario ObterDadosCadastrais()
     {
-        throw new NotImplementedException();
+      Console.Write("Digite o nome do Paciente: ");
+      string nome = Console.ReadLine() ?? string.Empty;
+
+      Console.Write("Digite o telefone do Paciente. ex: (XX) XXXX-XXXX: ");
+      string telefone = Console.ReadLine() ?? string.Empty;
+
+      Console.Write("Digite o CPF. ex: 000.000.000-00: ");
+      string cpf = Console.ReadLine() ?? string.Empty;
+
+      return new Funcionario(nome, telefone, cpf);
     }
-}
+
+    protected override List<string> ValidarRegistroDuplicado(Funcionario novaEntidade, string? idIgnorado = null)
+    {
+      List<string> erros = new List<string>();
+
+      List<Funcionario> funcionarios = repositorio.SelecionarTodos();
+
+      foreach (Funcionario p in funcionarios)
+      {
+        if (p.Id != idIgnorado && p.Cpf == novaEntidade.Cpf)
+        {
+          erros.Add($"Já existe um paciente com o Cartao do Sus \"{novaEntidade.Cpf}\"");
+          break;
+        }
+
+      }
+      return erros;
+    }
+  }
+

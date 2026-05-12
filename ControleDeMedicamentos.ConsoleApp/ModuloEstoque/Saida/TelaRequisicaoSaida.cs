@@ -49,7 +49,7 @@ public class TelaRequisicaoSaida : TelaBase<RequisicaoSaida>, ITelaOpcoes, ITela
 
         foreach (RequisicaoSaida req in requisicoes)
         {
-            Console.WriteLine("{0,-7} | Data: {1,-12} | Paciente: {2}",
+            Console.WriteLine("Id: {0,-7} | Data: {1,-12} | Paciente: {2}",
                 req.Id,
                 req.Data.ToString("dd/MM/yyyy"),
                 req.Paciente?.Nome ?? "N/A");
