@@ -17,6 +17,8 @@ Controle de pacientes, funcionários, medicamentos, fornecedores e estoque com s
 
 ---
 
+![](ControleDeMedicamentos.gif)
+
 # 📌 Sobre o Projeto
 
 O **Medication Control** foi desenvolvido com foco em:
