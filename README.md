@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📚 Controle de Medicamentos
+# 💊 Controle de Medicamentos
 
 ### Sistema de gerenciamento de controles de medicamentos desenvolvido em **C# com POO**
 Controle de pacientes, funcionários, medicamentos, fornecedores e estoque com separação de responsabilidades e regras de negócio reais.
